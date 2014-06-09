@@ -18,8 +18,8 @@
     </tr>
     <tr>
       <th>立委姓名</th>
-      <td><select name="select" id="select">
-      </select></td>
+      <td><%= f.select :legislator_ids , Legislator.all.to_a.map{|l| [l.name, l.id]}, {}, :multiple => true, :class => 'long-input' %></td>
+      </td>
     </tr>
     <tr>
       <th width="20%">新聞標題</th>
@@ -43,12 +43,7 @@
     <%= f.submit "確認儲存", :class => "btn-here" %>
   </p>
 <% end %>
-<script>
-  $(function() {
-    $('#textfield3').editable({
-      inlineMode: false, 
-      alwaysBlank: true, 
-      imageUploadURL: '/admin/upload', 
-      imageUploadParams: {authenticity_token: AUTH_TOKEN}})
-  });
+
+<script type="text/javascript">
+    $('#entry_legislator_ids').chosen();
 </script>
